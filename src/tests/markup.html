@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<title>Yeti Basic Test</title>
+<script type="text/javascript" src="../scripts/yui-test.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script>
+  YUI().use("test", function (Y) {
+    var SimpleTestCase = new Y.Test.Case({
+      name: "Yeti Simple Test Case",
+      testOk1: function () {
+        Y.Assert.areEqual(2, $('#div1 > span').length);
+        Y.Assert.areEqual("s1", $('#div1 > span:first-child').text());
+        $('#div1 > span:first-child').text('hello');
+      },
+      testOk: function () {
+        Y.Assert.areEqual(2, $('#div1 > span').length);
+        Y.Assert.areEqual("s1", $('#div1 > span:first-child').text());
+        $('#div1 > span:first-child').text('hello');
+      },
+      testOk2: function () {
+        Y.Assert.areEqual(2, $('#div1 > span').length);
+        Y.Assert.areEqual("s1", $('#div1 > span:first-child').text());
+        $('#div1 > span:first-child').text('hello');
+      },
+      setUp: function () {
+        this.originalMarkup = $('body').html();
+      },
+      tearDown: function () {
+        $('body').html(this.originalMarkup);
+      }
+    });
+
+    var SimpleSuite = new Y.Test.Suite("Yeti Simple Test Suite");
+
+    SimpleSuite.add(SimpleTestCase);
+
+    Y.Test.Runner.add(SimpleSuite);
+
+    Y.Test.Runner.run();
+  });
+</script>
+<body>
+  <div id="div1">
+    <span>s1</span>
+    <span>s2</span>
+  </div>  
+</body>
+</html>
