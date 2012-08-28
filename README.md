@@ -1,4 +1,4 @@
 YetiExpirments
 ==============
 
-Expirments with Yeti
+Just some playing with Yeti
