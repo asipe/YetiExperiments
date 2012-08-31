@@ -7,11 +7,14 @@
   YUI().use("test", function (Y) {
     var SimpleTestCase = new Y.Test.Case({
       name: "Yeti Simple Test Case",
-      testOk1: function () {
-        //Y.Assert.areEqual(1, 2);
+      'I should not be called as setup failed': function () {
+        Y.Assert.areEqual(1, 2);
       },
       setUp: function () {
+//setup is called and the exception is thrown but the test case still runs as normal
+        console.log('in setup');
         throw 'err';
+        console.log('leaving setup (should not hit)');
       }
     });
 

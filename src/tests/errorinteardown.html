@@ -7,11 +7,14 @@
   YUI().use("test", function (Y) {
     var SimpleTestCase = new Y.Test.Case({
       name: "Yeti Simple Test Case",
-      testOk1: function () {
-        //Y.Assert.areEqual(1, 2);
+      'I should run and pass': function () {
+        Y.Assert.areEqual(1, 1);
       },
       tearDown: function () {
+//tearDown is called and the exception is thrown but the test case still runs as normal
+        console.log('in tearDown');
         throw 'err';
+        console.log('after exception (should not hit)');
       }
     });
 
