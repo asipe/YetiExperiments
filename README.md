@@ -1,1 +1,1 @@
-Just some playing with Yeti
+Experiments with Yeti
