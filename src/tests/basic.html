@@ -14,7 +14,7 @@ YUI().use("test", function (Y) {
         testFailure: function () {
           Y.Assert.areEqual(1, 2);
         },
-        testError: function () {
+        'this tests a bigger name': function () {
           throw "err";
         },
     });
