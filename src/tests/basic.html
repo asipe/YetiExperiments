@@ -1,30 +1,45 @@
 <!doctype html>
-<title>Yeti Basic Test</title>
-<script type="text/javascript" src="../scripts/yui-test.js"></script>
-<script>
-YUI().use("test", function (Y) {
-    var SimpleTestCase = new Y.Test.Case({
-        name: "Yeti Simple Test Case",
-        testOk: function () {
-            Y.Assert.areEqual(1, 1);
-        },
-        testAnotherOk: function () {
-          Y.Assert.areEqual(1, 1);
-        },
-        testFailure: function () {
-          Y.Assert.areEqual(1, 2);
-        },
-        'this tests a bigger name': function () {
-          throw "err";
-        },
+<html>
+<head>
+  <title>Yeti Basic Test</title>
+  <script type="text/javascript" src="../scripts/yui-test.js"></script>
+  <script>
+    YUI().use("test", 'test-console', function (Y) {
+        var SimpleTestCase = new Y.Test.Case({
+            name: "Yeti Simple Test Case",
+            testOk: function () {
+                Y.Assert.areEqual(1, 1);
+            },
+            testAnotherOk: function () {
+              Y.Assert.areEqual(1, 1);
+            },
+            testFailure: function () {
+              Y.Assert.areEqual(1, 2);
+            },
+            'this tests a bigger name': function () {
+              throw "err";
+            },
+        });
+    
+        var SimpleSuite = new Y.Test.Suite("Yeti Simple Test Suite");
+    
+        SimpleSuite.add(SimpleTestCase);
+    
+        (new Y.Test.Console({
+            verbose : true,
+            newestOnTop : false,
+            filters: {pass: true, fail: true},
+			style: 'block'
+        })).render('#log');
+    
+    
+        Y.Test.Runner.add(SimpleSuite);
+    
+        Y.Test.Runner.run();
     });
-
-    var SimpleSuite = new Y.Test.Suite("Yeti Simple Test Suite");
-
-    SimpleSuite.add(SimpleTestCase);
-
-    Y.Test.Runner.add(SimpleSuite);
-
-    Y.Test.Runner.run();
-});
-</script>
+  </script>
+</head>
+<body class="yui3-skin-sam  yui-skin-sam">
+  <div id="log"></div>
+</body>
+</html>
